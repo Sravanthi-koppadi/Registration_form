@@ -1,0 +1,32 @@
+/* 1. Navigation Container */
+nav {
+  background-color: #ffffff;
+  padding: 40px 20px; /* Increased padding for a "Big" header feel */
+  border-bottom: 1px solid #dadce0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 2. Big Heading Styling */
+nav h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;      /* Increased size to match/exceed form heading */
+  font-weight: 400;    /* Google's clean, light weight */
+  color: #202124;      /* Dark grey/black */
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+/* 3. Responsive Scaling */
+@media (max-width: 600px) {
+  nav {
+    padding: 30px 15px;
+  }
+  nav h1 {
+    font-size: 28px;   /* Scales down nicely for phones */
+  }
+}

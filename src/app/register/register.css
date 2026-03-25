@@ -1,0 +1,137 @@
+/* 1. Global Background */
+:host {
+  display: block;
+  background-color: #f0ebf8; /* Light lavender-grey */
+  min-height: 100vh;
+  padding: 20px 10px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+/* 2. Main Wrapper */
+form {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* 3. Header Styling (Purple Accent) */
+h1 {
+  background: white;
+  margin-bottom: 12px;
+  padding: 32px 16px; /* Increased top/bottom padding for a cleaner look */
+  border-radius: 8px;
+  border-top: 10px solid #673ab7; /* The Purple Accent Bar */
+  
+  /* Centering Logic */
+  display: flex;
+  justify-content: center; /* Horizontally centers text */
+  align-items: center;     /* Vertically centers text */
+  text-align: center;      /* Ensures multi-line text is centered */
+  
+  font-size: 32px;
+  font-weight: 400;
+  color: #202124;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  
+  /* Makes sure it doesn't touch the edges on mobile */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 4. The Card Layout */
+.form-group {
+  background: white;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* 5. Flexbox Row for side-by-side fields (First/Last name, City/State) */
+.form-row {
+  display: flex;
+  gap: 20px;
+  background: white;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  padding: 0;
+  margin-bottom: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* 6. Input Styling */
+label {
+  display: block;
+  font-size: 16px;
+  color: #202124;
+  margin-bottom: 8px;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 8px 0;
+  font-size: 14px;
+  outline: none;
+  background: transparent;
+  color: #202124;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-bottom: 2px solid #673ab7;
+}
+
+/* 7. Error States */
+/* Highlight the card border if there is an error inside */
+.form-group:has(.error), .form-row:has(.error) {
+  border: 1px solid #d93025;
+}
+
+.error {
+  color: #d93025;
+  font-size: 12px;
+  margin-top: 8px;
+  display: block;
+}
+
+/* 8. The Submit Button */
+button[type="submit"] {
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: background 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background-color: #512da8;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* 9. Responsive "Magic" */
+@media (max-width: 500px) {
+  .form-row {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  h1 { font-size: 24px; }
+  .form-group { padding: 15px; }
+}
