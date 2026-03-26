@@ -1,51 +1,46 @@
-/* Container and Background */
+/* 1. The Global Reset (CRITICAL: prevents layout "bursting") */
+* {
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Outer Wrapper Padding */
 .registration-wrapper {
-  background-color: #f0f2f5; /* Light grey background to make white boxes pop */
+  background-color: #f0f2f5;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  /* Adaptive padding for the screen edges */
+  padding: 40px 20px; 
+  font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
+/* 3. The White Box */
 .form-container {
-  background: #ffffff; /* Clean white box */
+  background: #ffffff;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px; /* Comfortable width for desktop */
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border-top: 8px solid blueviolet; /* Your requested accent */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-top: 8px solid blueviolet;
   overflow: hidden;
 }
 
-/* Header Section */
+/* 4. Desktop Inner Padding */
 header {
-  padding: 40px 40px 10px;
+  padding: 40px 50px 10px 50px; /* Top, Right, Bottom, Left */
   text-align: center;
 }
 
-.title {
-  color: #2d3436;
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: -0.5px;
-}
-
-.subtitle {
-  color: #636e72;
-  font-size: 1rem;
-  margin-top: 8px;
-}
-
-/* Form Styling */
 form {
-  padding: 20px 40px 40px;
+  /* Gives plenty of "white space" around your fields on desktop */
+  padding: 20px 50px 50px 50px; 
 }
 
 fieldset {
   border: none;
-  padding: 0;
   margin-bottom: 30px;
 }
 
@@ -54,106 +49,60 @@ legend {
   color: blueviolet;
   font-size: 1.1rem;
   margin-bottom: 20px;
-  display: block;
-  width: 100%;
   border-bottom: 1px solid #eee;
+  width: 100%;
   padding-bottom: 8px;
 }
 
-/* Flexbox Row System */
 .row {
   display: flex;
-  gap: 20px;
-  margin-bottom: 5px;
-}
-
-.group {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  gap: 25px; /* Space between side-by-side inputs */
   margin-bottom: 15px;
 }
 
-/* Responsive Breakpoint for Mobile */
+.group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 5. Mobile Adjustments (The "Magic" Part) */
 @media (max-width: 600px) {
+  .registration-wrapper {
+    padding: 15px; /* Less space on the outside for small screens */
+  }
+
+  header {
+    padding: 30px 20px 10px 20px; /* Reduced padding inside the white box */
+  }
+
+  form {
+    padding: 10px 20px 30px 20px; /* Thinner gutters on mobile */
+  }
+
   .row {
-    flex-direction: column; /* Stacks fields on small screens */
+    flex-direction: column; /* Stacks the columns vertically */
     gap: 0;
   }
-  
-  form {
-    padding: 20px;
-  }
 }
 
-/* Input Fields & Selects */
-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #2d3436;
-}
-
+/* Input styling to match the padding */
 input, select, textarea {
-  padding: 12px 15px;
-  border: 1px solid #dfe6e9;
-  border-radius: 6px;
-  font-size: 1rem;
-  background-color: #fdfdfd;
-  transition: all 0.2s ease;
   width: 100%;
-  box-sizing: border-box; /* Crucial for responsiveness */
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: blueviolet;
-  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
-}
-
-/* Error messages */
-.err {
-  color: #e74c3c;
-  font-size: 0.8rem;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   margin-top: 5px;
-  font-weight: 500;
 }
 
-/* Helper to hide City/State labels visually but keep for screen readers */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* Submit Button */
 .submit-btn {
   background-color: blueviolet;
   color: white;
-  border: none;
-  padding: 16px;
   width: 100%;
+  padding: 16px;
+  border: none;
   border-radius: 8px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.1s, background 0.2s;
-}
-
-.submit-btn:hover:not(:disabled) {
-  background-color: #6c22c4;
-}
-
-.submit-btn:active:not(:disabled) {
-  transform: scale(0.98);
-}
-
-.submit-btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
 }
