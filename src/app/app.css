@@ -1,32 +1,76 @@
-/* 1. Navigation Container */
-nav {
-  background-color: #ffffff;
-  padding: 40px 20px; /* Increased padding for a "Big" header feel */
-  border-bottom: 1px solid #dadce0;
+/* Universal Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header/Nav Styling */
+.main-header {
+  background: white;
+  padding: 1rem 2rem;
+  border-bottom: 3px solid blueviolet;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nav-title {
+  color: blueviolet;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+/* Main Wrapper with Responsive Padding */
+.registration-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  align-items: flex-start; /* Keeps it from stretching vertically */
+  padding: 40px 20px;     /* Desktop: Large vertical padding */
 }
 
-/* 2. Big Heading Styling */
-nav h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 36px;      /* Increased size to match/exceed form heading */
-  font-weight: 400;    /* Google's clean, light weight */
-  color: #202124;      /* Dark grey/black */
-  margin: 0;
+/* The White Box */
+.form-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 750px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-top: 8px solid blueviolet;
+  overflow: hidden; /* Ensures content doesn't break corners */
+}
+
+/* Inner Spacing */
+.form-header {
+  padding: 40px 40px 10px 40px;
   text-align: center;
-  letter-spacing: -0.5px;
 }
 
-/* 3. Responsive Scaling */
+.title {
+  font-size: 2rem;
+  color: #333;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: 8px;
+}
+
+/* Mobile Adjustments */
 @media (max-width: 600px) {
-  nav {
-    padding: 30px 15px;
+  .registration-wrapper {
+    padding: 15px; /* Less space on phone edges */
   }
-  nav h1 {
-    font-size: 28px;   /* Scales down nicely for phones */
+
+  .form-header {
+    padding: 30px 20px 10px 20px; /* Tighter padding for small screens */
+  }
+
+  .title {
+    font-size: 1.5rem;
   }
 }
