@@ -1,146 +1,67 @@
-/* Core Reset */
+/* 1. Reset everything properly */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  background-color: #f0f2f5;
-  font-family: 'Segoe UI', Arial, sans-serif;
+/* 2. Ensure the Angular component fills the space */
+:host {
+  display: block;
 }
 
-/* Outer Wrapper with Desktop/Mobile Padding */
 .registration-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px 20px; /* Desktop padding */
+  align-items: flex-start; /* Better for long forms than 'center' */
+  padding: 40px 15px;      /* Slightly reduced for better fit */
   min-height: 100vh;
+  background-color: #f0f2f5;
+  width: 100%;
 }
 
-/* The White Box */
 .form-container {
   background: #ffffff;
   width: 100%;
-  max-width: 750px;
+  max-width: 700px; /* Reduced slightly to prevent overflow */
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-top: 8px solid blueviolet; /* Accent color */
-  overflow: hidden;
+  border-top: 8px solid blueviolet;
+  overflow: hidden; /* Contains all internal padding */
 }
 
-.form-header {
-  padding: 40px 40px 10px 40px;
-  text-align: center;
-}
-
-.title {
-  font-size: 2rem;
-  color: #333;
-}
-
-.subtitle {
-  color: #666;
-  margin-top: 5px;
-}
-
+/* 3. Handle padding within the form */
 form {
-  padding: 20px 40px 40px 40px; /* Desktop internal padding */
+  padding: 20px 30px 40px 30px; 
 }
 
-.fieldset {
-  margin-bottom: 30px;
-}
-
-.legend {
-  font-weight: 700;
-  color: blueviolet;
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-}
-
-/* Responsive Row System */
+/* 4. Fix the Row bulging */
 .row {
   display: flex;
   gap: 20px;
+  width: 100%;
   margin-bottom: 15px;
 }
 
 .group {
+  flex: 1;
+  min-width: 0; /* Prevents text from pushing padding out */
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #444;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: blueviolet;
-  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
-}
-
-.err {
-  color: #d32f2f;
-  font-size: 0.8rem;
-  margin-top: 5px;
-}
-
-.visually-hidden {
-  display: none;
-}
-
-.submit-btn {
-  background-color: blueviolet;
-  color: white;
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.submit-btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Mobile Adjustments */
+/* 5. Mobile Adjustments */
 @media (max-width: 600px) {
   .registration-wrapper {
-    padding: 15px; /* Minimal space on phone screen edges */
-  }
-
-  .form-header {
-    padding: 30px 20px 10px 20px;
+    padding: 10px; /* Essential for mobile screen edges */
   }
 
   form {
-    padding: 10px 20px 30px 20px; /* Thinner padding for small phones */
+    padding: 20px 15px; /* Thinner horizontal padding for phones */
   }
 
   .row {
-    flex-direction: column; /* Stacks fields vertically */
+    flex-direction: column;
     gap: 0;
   }
 }
