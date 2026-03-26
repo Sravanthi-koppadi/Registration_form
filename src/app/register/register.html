@@ -1,15 +1,15 @@
-<main class="registration-wrapper">
-  <section class="form-container">
+<div class="registration-wrapper">
+  <div class="form-container">
     
-    <header>
+    <div class="form-header">
       <h1 class="title">Internship Registration</h1>
       <p class="subtitle">Complete the form to start your application</p>
-    </header>
+    </div>
 
     <form [formGroup]="profileForm" (ngSubmit)="submitdata(profileForm.getRawValue())">
       
-      <fieldset>
-        <legend>Personal Identity</legend>
+      <div class="fieldset">
+        <div class="legend">Personal Identity</div>
         
         <div class="row">
           <div class="group">
@@ -34,10 +34,10 @@
             <input type="tel" id="phone" formControlName="phone" placeholder="10-digit number">
           </div>
         </div>
-      </fieldset>
+      </div>
 
-      <fieldset>
-        <legend>Application Details</legend>
+      <div class="fieldset">
+        <div class="legend">Application Details</div>
         
         <div class="row">
           <div class="group">
@@ -59,30 +59,22 @@
           <label for="course">Interested Course</label>
           <select id="course" formControlName="course">
             <option value="">Choose Course</option>
-            <option value="java">Java Development</option>
-            <option value="angular">Angular Pro</option>
+            <option value="java-fs">Java Full-Stack Development</option>
+            <option value="angular-pro">Angular Pro & Architecture</option>
             <option value="gen-ai">Generative AI & LLM Engineering</option>
-      <option value="data-science">Data Science & Predictive Analytics</option>
-      <option value="machine-learning">Machine Learning Operations (MLOps)</option>
-      <option value="data-analytics">Business Intelligence & Data Visualization</option>
-      <option value="aws-cloud">AWS Cloud Architecture</option>
-      <option value="devops">DevOps & Platform Engineering</option>
-      <option value="cyber-security">Cybersecurity & Ethical Hacking</option>
-      <option value="azure-solutions">Microsoft Azure Solutions</option>
-      <option value="ui-ux">UI/UX Design with AI Tools</option>
-      <option value="digital-marketing">Digital Marketing & Growth Hacking</option>
-      <option value="product-mgmt">Product Management</option>
-      <option value="java-fullstack">Java Full-Stack Development</option>
-      <option value="angular-pro">Angular Pro & Architecture</option>
-      <option value="mern-stack">MERN Stack (MongoDB, Express, React, Node)</option>
-      <option value="python-backend">Python Backend with Django/Flask</option>
-      <option value="mobile-app">Mobile App Dev (Flutter/React Native)</option>
+            <option value="data-science">Data Science & Analytics</option>
+            <option value="devops">DevOps & Platform Engineering</option>
+            <option value="cyber-security">Cybersecurity & Ethical Hacking</option>
+            <option value="ui-ux">UI/UX Design with AI Tools</option>
+            <option value="python-backend">Python Backend (Django/Flask)</option>
+            <option value="mern-stack">MERN Stack Development</option>
+            <option value="mobile-app">Mobile App Dev (Flutter/React Native)</option>
           </select>
         </div>
-      </fieldset>
+      </div>
 
-      <fieldset>
-        <legend>Location & Background</legend>
+      <div class="fieldset">
+        <div class="legend">Location & Background</div>
         
         <div class="group">
           <label for="address">Current Address</label>
@@ -104,14 +96,14 @@
           <label for="aboutMe">About Me</label>
           <textarea id="aboutMe" formControlName="aboutMe" rows="3" placeholder="Tell us about yourself"></textarea>
         </div>
-      </fieldset>
+      </div>
 
-      <footer>
+      <div class="form-footer">
         <button type="submit" class="submit-btn" [disabled]="profileForm.invalid">
           Complete Registration
         </button>
-      </footer>
+      </div>
 
     </form>
-  </section>
-</main>
+  </div>
+</div>

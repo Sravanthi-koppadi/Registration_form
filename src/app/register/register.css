@@ -1,98 +1,110 @@
-/* 1. The Global Reset (CRITICAL: prevents layout "bursting") */
+/* Core Reset */
 * {
-  box-sizing: border-box; 
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* 2. Outer Wrapper Padding */
-.registration-wrapper {
+body {
   background-color: #f0f2f5;
-  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Outer Wrapper with Desktop/Mobile Padding */
+.registration-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Adaptive padding for the screen edges */
-  padding: 40px 20px; 
-  font-family: 'Segoe UI', Roboto, sans-serif;
+  padding: 40px 20px; /* Desktop padding */
+  min-height: 100vh;
 }
 
-/* 3. The White Box */
+/* The White Box */
 .form-container {
   background: #ffffff;
   width: 100%;
-  max-width: 800px; /* Comfortable width for desktop */
+  max-width: 750px;
   border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  border-top: 8px solid blueviolet;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-top: 8px solid blueviolet; /* Accent color */
   overflow: hidden;
 }
 
-/* 4. Desktop Inner Padding */
-header {
-  padding: 40px 50px 10px 50px; /* Top, Right, Bottom, Left */
+.form-header {
+  padding: 40px 40px 10px 40px;
   text-align: center;
 }
 
-form {
-  /* Gives plenty of "white space" around your fields on desktop */
-  padding: 20px 50px 50px 50px; 
+.title {
+  font-size: 2rem;
+  color: #333;
 }
 
-fieldset {
-  border: none;
+.subtitle {
+  color: #666;
+  margin-top: 5px;
+}
+
+form {
+  padding: 20px 40px 40px 40px; /* Desktop internal padding */
+}
+
+.fieldset {
   margin-bottom: 30px;
 }
 
-legend {
+.legend {
   font-weight: 700;
   color: blueviolet;
   font-size: 1.1rem;
   margin-bottom: 20px;
   border-bottom: 1px solid #eee;
-  width: 100%;
   padding-bottom: 8px;
 }
 
+/* Responsive Row System */
 .row {
   display: flex;
-  gap: 25px; /* Space between side-by-side inputs */
+  gap: 20px;
   margin-bottom: 15px;
 }
 
 .group {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
-/* 5. Mobile Adjustments (The "Magic" Part) */
-@media (max-width: 600px) {
-  .registration-wrapper {
-    padding: 15px; /* Less space on the outside for small screens */
-  }
-
-  header {
-    padding: 30px 20px 10px 20px; /* Reduced padding inside the white box */
-  }
-
-  form {
-    padding: 10px 20px 30px 20px; /* Thinner gutters on mobile */
-  }
-
-  .row {
-    flex-direction: column; /* Stacks the columns vertically */
-    gap: 0;
-  }
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
 }
 
-/* Input styling to match the padding */
 input, select, textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: blueviolet;
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+}
+
+.err {
+  color: #d32f2f;
+  font-size: 0.8rem;
   margin-top: 5px;
+}
+
+.visually-hidden {
+  display: none;
 }
 
 .submit-btn {
@@ -105,4 +117,30 @@ input, select, textarea {
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .registration-wrapper {
+    padding: 15px; /* Minimal space on phone screen edges */
+  }
+
+  .form-header {
+    padding: 30px 20px 10px 20px;
+  }
+
+  form {
+    padding: 10px 20px 30px 20px; /* Thinner padding for small phones */
+  }
+
+  .row {
+    flex-direction: column; /* Stacks fields vertically */
+    gap: 0;
+  }
 }
