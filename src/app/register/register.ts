@@ -34,36 +34,39 @@ export class Register {
 
 // 1. Ensure the control is in the FormGroup
 profileForm = new FormGroup({
-  firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}$')]),
-    dob: new FormControl('', [Validators.required]),
-    gender: new FormControl('', [Validators.required]),
-    qualification: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
-    state: new FormControl('', [Validators.required]),
-    country: new FormControl('', [Validators.required]),
-    zipCode: new FormControl('', [Validators.required]) // Make sure this is here!
-});
+  firstName: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2)] }),
+    lastName: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    email: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
+    password: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
+    phone: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.pattern('^[0-9]{10}$')] }),
+    dob: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    gender: new FormControl<AppUser['gender']>('', { nonNullable: true, validators: [Validators.required] }),
+    qualification: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    address: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    city: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    state: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    country: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    zipCode: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    aboutMe: new FormControl<string>(''),
+    course: new FormControl<string>('')
+    });
+    get firstName() { return this.profileForm.controls.firstName; }
+  get lastName() { return this.profileForm.controls.lastName; }
+  get email() { return this.profileForm.controls.email; }
+  get password() { return this.profileForm.controls.password; }
+  get phone() { return this.profileForm.controls.phone; }
+  get dob() { return this.profileForm.controls.dob; }
+  get gender() { return this.profileForm.controls.gender; }
+  get qualification() { return this.profileForm.controls.qualification; }
+  get address() { return this.profileForm.controls.address; }
+  get city() { return this.profileForm.controls.city; }
+  get state() { return this.profileForm.controls.state; }
+  get country() { return this.profileForm.controls.country; }
+  get zipCode() { return this.profileForm.controls.zipCode; }
+  get aboutMe() { return this.profileForm.controls.aboutMe; }
+  get course() { return this.profileForm.controls.course; }
 
-// 2. Add these Getters (This is what fixes the error)
-get firstName() { return this.profileForm.get('firstName'); }
-  get lastName() { return this.profileForm.get('lastName'); }
-  get email() { return this.profileForm.get('email'); }
-  get password() { return this.profileForm.get('password'); }
-  get phone() { return this.profileForm.get('phone'); }
-  get dob() { return this.profileForm.get('dob'); }
-  get gender() { return this.profileForm.get('gender'); }
-  get qualification() { return this.profileForm.get('qualification'); }
-  get address() { return this.profileForm.get('address'); }
-  get city() { return this.profileForm.get('city'); }
-  get state() { return this.profileForm.get('state'); }
-  get country() { return this.profileForm.get('country'); }
-  get zipCode() { return this.profileForm.get('zipCode'); }
-   // Change 'user: User' to 'user: any' to satisfy the HTML compiler
+  
   submitdata(user: any) { 
     if (this.profileForm.valid) {
       this.product.saveUsers(user).subscribe({

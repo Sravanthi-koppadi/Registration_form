@@ -1,137 +1,152 @@
-/* 1. Global Background */
-:host {
-  display: block;
-  background-color: #f0ebf8; /* Light lavender-grey */
+/* General Layout */
+.registration-wrapper {
+  background-color: #f4f7f6;
   min-height: 100vh;
-  padding: 20px 10px;
-  font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-/* 2. Main Wrapper */
-form {
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-/* 3. Header Styling (Purple Accent) */
-h1 {
-  background: white;
-  margin-bottom: 12px;
-  padding: 32px 16px; /* Increased top/bottom padding for a cleaner look */
-  border-radius: 8px;
-  border-top: 10px solid #673ab7; /* The Purple Accent Bar */
-  
-  /* Centering Logic */
   display: flex;
-  justify-content: center; /* Horizontally centers text */
-  align-items: center;     /* Vertically centers text */
-  text-align: center;      /* Ensures multi-line text is centered */
-  
-  font-size: 32px;
-  font-weight: 400;
-  color: #202124;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-  
-  /* Makes sure it doesn't touch the edges on mobile */
-  width: 100%;
-  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 4. The Card Layout */
-.form-group {
+.form-container {
   background: white;
-  border: 1px solid #dadce0;
+  width: 100%;
+  max-width: 650px;
   border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 12px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid blueviolet; /* Your requested theme color */
+  overflow: hidden;
 }
 
-/* 5. Flexbox Row for side-by-side fields (First/Last name, City/State) */
-.form-row {
+/* Header Styling */
+header {
+  padding: 30px 30px 10px;
+  text-align: center;
+}
+
+.title {
+  color: #333;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+/* Form Elements */
+form {
+  padding: 20px 30px 30px;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+legend {
+  font-weight: 600;
+  color: blueviolet;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+/* Grid & Responsiveness */
+.row {
   display: flex;
   gap: 20px;
-  background: white;
-  border: 1px solid #dadce0;
-  border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
-.form-row .form-group {
+.group {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  padding: 0;
-  margin-bottom: 0;
-  border: none;
-  box-shadow: none;
+  margin-bottom: 15px;
 }
 
-/* 6. Input Styling */
+/* Mobile Responsiveness for Rows */
+@media (max-width: 480px) {
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Inputs, Selects, and Textareas */
 label {
-  display: block;
-  font-size: 16px;
-  color: #202124;
-  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
 }
 
 input, select, textarea {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
   width: 100%;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 8px 0;
-  font-size: 14px;
-  outline: none;
-  background: transparent;
-  color: #202124;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
 }
 
 input:focus, select:focus, textarea:focus {
-  border-bottom: 2px solid #673ab7;
+  outline: none;
+  border-color: blueviolet;
+  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.1);
 }
 
-/* 7. Error States */
-/* Highlight the card border if there is an error inside */
-.form-group:has(.error), .form-row:has(.error) {
-  border: 1px solid #d93025;
-}
-
-.error {
+/* Error Messages */
+.err {
   color: #d93025;
-  font-size: 12px;
-  margin-top: 8px;
-  display: block;
+  font-size: 0.75rem;
+  margin-top: 4px;
 }
 
-/* 8. The Submit Button */
-button[type="submit"] {
-  background-color: #673ab7;
+/* Visually Hidden (for City/State labels) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Button Styling */
+footer {
+  margin-top: 10px;
+}
+
+.submit-btn {
+  background-color: blueviolet;
   color: white;
   border: none;
-  padding: 10px 24px;
+  padding: 14px 20px;
+  width: 100%;
   border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  transition: background 0.2s;
+  transition: background 0.3s ease;
 }
 
-button:hover:not(:disabled) {
-  background-color: #512da8;
+.submit-btn:hover:not(:disabled) {
+  background-color: #6a1bbd;
 }
 
-button:disabled {
-  background-color: #cccccc;
+.submit-btn:disabled {
+  background-color: #ccc;
   cursor: not-allowed;
-}
-
-/* 9. Responsive "Magic" */
-@media (max-width: 500px) {
-  .form-row {
-    flex-direction: column;
-    padding: 15px;
-  }
-  
-  h1 { font-size: 24px; }
-  .form-group { padding: 15px; }
+  opacity: 0.7;
 }
